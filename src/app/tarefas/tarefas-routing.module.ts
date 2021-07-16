@@ -8,6 +8,8 @@ import { TarefasModule } from "./tarefas.module";
 
 import { CadastrarTarefaComponent } from "./cadastrar";
 
+import { EditarTarefaComponent } from "./editar";
+
 export const TarefaRoutes: Routes = [
     {
         path: 'tarefas',
@@ -28,5 +30,9 @@ export const TarefaRoutes: Routes = [
     {
         path: 'tarefas/cadastrar',
         component: CadastrarTarefaComponent
+    },
+    {
+        path: 'tarefas/editar/:id',
+        component: EditarTarefaComponent
     }
 ]

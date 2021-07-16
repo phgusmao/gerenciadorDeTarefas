@@ -20,9 +20,15 @@ export class TarefaService {
     localStorage['tarefas'] = JSON.stringify(tarefas);
   }
 
-  buscarPorId(id: number): Tarefa | undefined{
+  buscarPorId(id: number): Tarefa {
     const tarefas: Tarefa [] = this.listarTodos();
-    return tarefas.find(tarefa => tarefa.id === id);
+    const encontrada = tarefas.find(tarefa => tarefa.id === id) 
+    //return tarefas.find(tarefa => tarefa.id === id);
+    if(!encontrada){
+      throw new Error('Nenhuma tarefa foi encontrada');
+    }else{
+      return encontrada;
+    }
   }
 
   atualizar(tarefa: Tarefa): void {
@@ -41,7 +47,7 @@ export class TarefaService {
     localStorage['tarefas'] = JSON.stringify(tarefas);
   }
 
-  alterarStatus(id: number): void{
+  alterarStatus(id: number | undefined): void{
     const tarefas: Tarefa[] = this.listarTodos();
     tarefas.forEach((obj, index, objs) => {
       if(id === obj.id) {
